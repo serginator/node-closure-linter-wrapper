@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<checkstyle version="4.3">
+	<file name="error.js">
+		<error line="5" column="1" severity="220" message="No docs found for member &apos;global.expect&apos;" source=""/>
+		<error line="7" column="22" severity="2" message="Missing space before &quot;{&quot;" source=""/>
+		<error line="11" column="21" severity="2" message="Missing space before &quot;{&quot;" source=""/>
+	</file>
+</checkstyle>
+

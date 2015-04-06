@@ -206,6 +206,23 @@ gjslint({
 );
 ```
 
+#### checkstyle_xml
+The checkstyle_xml reporter outputs xml format which is compatible with jslint reporter that can be used in Jenkins along with the Violations plugin.
+Add a `dest` option to set the destination if you want to save the file.
+```js
+var gjslint = require('closure-linter-wrapper').gjslint;
+gjslint({
+    flags: flagsArray
+    reporter: {
+      name: 'checkstyle_xml',
+      dest: 'reports/checkstyle.xml'
+    }
+  },
+  function (err, result) {
+  }
+);
+```
+
 ## Contributing
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 

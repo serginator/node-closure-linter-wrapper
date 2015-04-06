@@ -253,6 +253,31 @@ describe('Closure Linter Wrapper', function() {
       });
     });
 
+    it('should support checkstyle_xml reporter', function(done) {
+      var pstdoutwrite = process.stdout.write;
+      var expected_report = fs.readFileSync('test/files/expected_checkstyle_report.xml', 'utf8');
+      var report;
+
+      process.stdout.write = function(output) {
+        report = output;
+      };
+
+      console.log('expected_report: %s', expected_report);
+
+      gjslint({
+        src: ['test/files/error.js'],
+        reporter: {
+          name: 'checkstyle_xml',
+          dest: 'test/files/out.xml'
+        }
+      }, function() {
+        console.log('pstdoutwrite: %s', pstdoutwrite);
+        process.stdout.write = pstdoutwrite;
+        expect(report).to.be.equal(expected_report.replace('error.js', process.cwd() + '/test/files/error.js'));
+        done();
+      });
+    });
+
     it('should export the results to a results file', function() {
       var expected_report = fs.readFileSync('test/files/expected_report.xml', 'utf8'),
           report;
